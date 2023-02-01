@@ -5,14 +5,34 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles.css" />
     <script src="./script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
   </head>
   <body>
     <h1 class="title">Deez Library</h1>
     <div class="main-content">
       <div class="books"></div>
       <div class="actions">
-        <button type="button">Add book!</button>
+        <button type="button" onclick="showModal()">Add book!</button>
       </div>
+    </div>
+    <div class="popup-form">
+      <form method="post" action="#">
+        <span class="material-symbols-outlined close">
+          close
+        </span>
+        <h2>Enter book details:</h2>
+        <div>
+          <label for="title">Book title</label>
+          <input type="text" id="title" name="title" minlength="40" required />
+        </div>
+
+        <button type="submit" onclick="closeModal()">
+          Submit book details
+        </button>
+      </form>
     </div>
   </body>
 </html>

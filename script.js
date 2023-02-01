@@ -16,4 +16,17 @@ function display() {
   }
 }
 
+const modal = document.querySelector(".popup-form");
+const close = document.querySelector(".close");
+
+function showModal() {
+  modal.classList.add("active");
+}
+
+function closeModal() {
+  modal.classList.remove("active");
+}
+
+close.addEventListener("click", closeModal);
+
 display();
