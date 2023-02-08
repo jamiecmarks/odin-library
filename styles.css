@@ -92,8 +92,8 @@ button:hover {
 
 .popup-form > form {
   background-color: #f1dbbf;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   position: absolute;
   top: 0%;
   left: 50%;
@@ -103,9 +103,10 @@ button:hover {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  gap: 40px;
 
   border-radius: 20px;
-  padding: 40px;
+  padding: 20px;
 }
 
 .popup-form div {
@@ -144,4 +145,21 @@ button:hover {
   top: 5px;
   right: 10px;
   cursor: pointer;
+}
+
+.form-controls {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  row-gap: 20px;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.form-controls > label {
+  justify-self: start;
+}
+
+input[type="checkbox"]:hover,
+label:hover {
+  color: var(--main-clr);
 }

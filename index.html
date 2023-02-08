@@ -24,11 +24,41 @@
           close
         </span>
         <h2>Enter book details:</h2>
-        <div>
-          <label for="title">Book title</label>
-          <input type="text" id="title" name="title" minlength="40" required />
+        <div class="form-controls">
+          <label for="title">Book title:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            minlength="40"
+            placeholder="What is the Deez?"
+            required
+          />
+          <label for="author">Author:</label>
+          <input
+            name="author"
+            id="author"
+            placeholder="Deez Deezington"
+            required
+          />
+          <label for="pages">Pages:</label>
+          <input
+            id="pages"
+            min="1"
+            max="5000"
+            type="number"
+            placeholder="25"
+            required
+          />
+          <label for="read-input">Read:</label>
+          <input
+            name="read-input"
+            id="read-input"
+            type="checkbox"
+            required
+            checked
+          />
         </div>
-
         <button type="submit" onclick="closeModal()">
           Submit book details
         </button>

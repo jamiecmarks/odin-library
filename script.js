@@ -1,17 +1,48 @@
-let myLibrary = ["Harry Potter", "The Hobbit", "The Lord of the Rings"];
+let myLibrary = [];
 const books = document.querySelector(".books");
 
-function Book() {}
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
+
+  this.info = () => {
+    if (read) {
+      return `${title}, ${pages} pages, read`;
+    }
+    return `${title}, ${pages} pages, not yet read`;
+  };
+}
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+function toggleRead(temporaryBook) {
+  temporaryBook.read = !temporaryBook.read;
+}
+
+//////////////////////////////////////////// Test book
+const theHobbit = new Book("The Hobbit", "J.R Tolken", 233, true);
+addBookToLibrary(theHobbit);
+//////////////////////////////////////////
+
 function display() {
   for (book of myLibrary) {
-    const tempBook = document.createElement("div");
+    let tempBook = document.createElement("div");
+    let title = document.createElement("p");
+    let author = document.createElement("p");
+    let pages = document.createElement("p");
+    let read = document.createElement("input");
+    let checkLabel = document.createElement("label");
+
+    read.type = "checkbox";
+    read.checked = true;
+    read.textContent = book.title;
+    tempBook.appendChild(read);
+
     tempBook.classList.add("book");
-    tempBook.textContent = book;
     books.appendChild(tempBook);
   }
 }
