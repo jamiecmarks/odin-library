@@ -1,5 +1,7 @@
 let myLibrary = [];
+
 const books = document.querySelector(".books");
+let bookCount = 0;
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -17,6 +19,7 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
+  ++bookCount;
 }
 
 function toggleRead(temporaryBook) {
@@ -35,20 +38,47 @@ function display() {
     let author = document.createElement("p");
     let pages = document.createElement("p");
     let read = document.createElement("input");
-    let checkLabel = document.createElement("label");
+    let removeBook = document.createElement("span");
+
+    removeBook.classList.add("material-symbols-outlined");
+    removeBook.classList.add("close");
+    removeBook.textContent = "close";
+    tempBook.appendChild(removeBook);
+
+    title.textContent = book.title;
+    tempBook.appendChild(title);
+
+    author.textContent = book.author;
+    tempBook.appendChild(author);
+
+    pages.textContent = book.pages;
+    tempBook.appendChild(pages);
 
     read.type = "checkbox";
-    read.checked = true;
-    read.textContent = book.title;
+    read.checked = book.read;
     tempBook.appendChild(read);
 
     tempBook.classList.add("book");
+    tempBook.setAttribute("data-value", bookCount);
+
     books.appendChild(tempBook);
   }
 }
 
+function remove_book(book) {
+  let allBooks = document.querySelectorAll(".book");
+  for (item of allBooks) {
+    if (item.getAttribute("data-value") == book.getAttribute("data-value")) {
+      item.parentNode.removeChild(item);
+    }
+  }
+  myLibrary.splice(book.getAttribute("data-value"), 1);
+
+  display();
+}
+
 const modal = document.querySelector(".popup-form");
-const close = document.querySelector(".close");
+const close = document.querySelector("form > .close");
 
 function showModal() {
   modal.classList.add("active");
